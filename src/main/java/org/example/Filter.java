@@ -12,12 +12,13 @@ public class Filter {
     protected List<Integer> outFilter(List<Integer> source) {
         Logger logger = Logger.getInstance();
         return source.stream().filter(n -> {
-            if (n < threshold){
-                logger.log("Элемент не прошол" + n);
+            if (n < threshold) {
+                logger.log(String.format("Элемент \"%s\" не прошёл", n));
+                return false;
             } else {
-                logger.log("Элемент прошёл " + n);
+                logger.log(String.format("Элемент \"%s\" прошёл", n));
+                return true;
             }
-            return false;
         }).toList();
     }
 }
